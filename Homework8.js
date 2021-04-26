@@ -25,7 +25,7 @@ checkEmail();
 
 // task3
 
-let rez = /d(b+)d/i;
+let rez = /d(b+)(d)/i;
 let str ="cdbBdbsbz";
 console.log(str.match(rez));
 
@@ -38,21 +38,22 @@ console.log(newstr);
 
 // task5
 
-function numberValidation(cardNumber){
-    let regExp = /^\(?([0-9]{4})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/;
-    if (regExp.test(cardNumber)==true){
-        return true;
+function numberValidation(str){
+    let regExp = /^\d{4}-\d{4}-\d{4}-\d{4}$/;
+    let validation =regExp.test(str);
+    if (validation){
+        console.log("Card number is valid");
     } else{
-        return false;
+        console.log("Wrong data. Please try again");
     }
 }
 numberValidation();
 
 // task6
 
-function checkEmail(email){
-    let regExp =/(\w)\S+@\S+\.\S+/;
-    if (){
+function checkEmail(str){
+    let regExp =/^[a-zA-Z0-9]+([-]?\w+)*@\w+([-]\w+)*(\.\w{2,3})+$/;
+    if (regExp.test(str)){
         console.log("Email is correct!");
     } else {
         console.log ("Email is not correct!");
@@ -61,6 +62,16 @@ function checkEmail(email){
 checkEmail();
 
 // task7
+
+function checkLogin(str){
+    let regExp =/^[a-zA-Z]{1}[a-zA-Z0-9\.]{1,9}$/;
+    let result = regExp.test(str);
+    let number = /[0-9\.]/g;
+    let resultNum = str.match(number);
+    console.log(`${str} is ${result} - ${resultNum}`);
+}
+checkLogin('ee1.1ret3');
+checkLogin('ee1*1ret3');
 
 
 
